@@ -19,4 +19,6 @@ You can share information about your:
 •	**Location** – The address of your store. 
 
 
-### Screenshots
+### Screenshot
+
+<img src="https://raw.githubusercontent.com/Alsarraj-Abdullah/Lab2_STIW2044/master/example.gif" width="430" height="845">
