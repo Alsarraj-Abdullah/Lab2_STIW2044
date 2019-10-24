@@ -1,4 +1,4 @@
-![alt text](https://raw.githubusercontent.com/Alsarraj-Abdullah/Lab2_STIW2044/master/assets/logo.png)
+![alt text](https://raw.githubusercontent.com/Alsarraj-Abdullah/Lab2_STIW2044/master/assets/logo.png =400x400)
 
 
 # Lab 2 - Splash Screen and Login screen (MyBarber)
