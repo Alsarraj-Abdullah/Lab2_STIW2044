@@ -14,24 +14,29 @@ class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => new _MyAppState();
 }
-
+//Text fields controllers
 final TextEditingController usernameField = TextEditingController();
 final TextEditingController passwordField = TextEditingController();
 
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
+    //Splashscreen
     return new SplashScreen(
+      //Splashscreen Delay : 15 secs
         seconds: 15,
         navigateAfterSeconds: new AfterSplash(),
         title: new Text(
           'It\'s like Uber, but for haircuts!',
           style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),
         ),
+        //Splashscreen Animated Logo
         image: new Image.asset('lyas.gif'),
+        //Splashscreen Background Image
         imageBackground: new AssetImage('bg.png'),
         styleTextUnderTheLoader: new TextStyle(),
         photoSize: 200.0,
+        //Loader (Loading icon) Color
         loaderColor: Colors.red);
   }
 }
@@ -40,8 +45,9 @@ class AfterSplash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void _pressMe() {
+      //If login fields are not empty.
       if (usernameField.text != '' && passwordField.text != '') {
-//full fields
+        //If username and password are correct.
         if (usernameField.text == 'abdullah' &&
             passwordField.text == '123456') {
           Alert(
@@ -64,7 +70,7 @@ class AfterSplash extends StatelessWidget {
             ],
           ).show();
         } else {
-          //Invalid username/password!
+          //If username and password are Invalid.
           Alert(
             context: context,
             type: AlertType.error,
@@ -84,6 +90,7 @@ class AfterSplash extends StatelessWidget {
           ).show();
         }
       } else {
+        //If login fields are empty.
         Alert(
           context: context,
           type: AlertType.warning,
@@ -103,7 +110,7 @@ class AfterSplash extends StatelessWidget {
         ).show();
       }
     }
-
+//Signup text URL Launcher.
     _launchURL() async {
       const url = 'https://sharpns.net';
       if (await canLaunch(url)) {
@@ -118,10 +125,12 @@ class AfterSplash extends StatelessWidget {
       body: Stack(
         children: <Widget>[
           Center(
+          //Main screen Background Image
             child: new Image.asset(
               'bg.png',
               width: size.width,
               height: size.height,
+              //Image repeat: to make a pattern style image.
               repeat: ImageRepeat.repeat,
             ),
           ),
@@ -143,12 +152,15 @@ class AfterSplash extends StatelessWidget {
                       style: TextStyle(color: Colors.blue[600], fontSize: 15),
                       decoration: InputDecoration(
                           hintText: 'Username',
+                          //filled: to make a background color for text fields.
                           filled: true,
+                          //withOpacity: to make the color transparent.
                           fillColor: Colors.white.withOpacity(0.5),
                           hintStyle:
                               TextStyle(color: Colors.grey, fontSize: 15),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30)),
+                              //prefixIcon: to set an icon for text field.
                           prefixIcon: Icon(
                             Icons.person,
                             color: Colors.blue[600],
@@ -157,6 +169,7 @@ class AfterSplash extends StatelessWidget {
                   TextField(
                       controller: passwordField,
                       style: TextStyle(color: Colors.blue[600], fontSize: 15),
+                      //obscureText: to hide password chars for password text field.
                       obscureText: true,
                       decoration: InputDecoration(
                         hintText: 'Password',
@@ -164,6 +177,7 @@ class AfterSplash extends StatelessWidget {
                         fillColor: Colors.white.withOpacity(0.5),
                         hintStyle: TextStyle(color: Colors.grey, fontSize: 15),
                         border: OutlineInputBorder(
+                          //borderRadius: To make round corners for text field.
                             borderRadius: BorderRadius.circular(30)),
                         prefixIcon: Icon(
                           Icons.lock,
