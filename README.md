@@ -7,6 +7,7 @@ Published By: Alsarraj Abdullah yaser - 243824
 Barbershops are small businesses, and small businesses have limited resources when it comes to marketing. With MyBarber application you can market your barber business here. This application represents your business 24-hours a day: it always makes your business discoverable and allows customers to learn more about you. Also, with this application, you can manage an appointment with the customer. Notification will be sent to indicates that a customer booking appointment with you. This is the best approach for you.
 
 You can share information about your:
+
 •	**Brand** - Just because you’re a small business doesn’t mean you don’t have a brand!
 
 •	**Theme** - Images of your shop, including barbershop interior and employees.
