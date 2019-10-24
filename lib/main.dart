@@ -14,6 +14,7 @@ class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => new _MyAppState();
 }
+
 //Text fields controllers
 final TextEditingController usernameField = TextEditingController();
 final TextEditingController passwordField = TextEditingController();
@@ -23,7 +24,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     //Splashscreen
     return new SplashScreen(
-      //Splashscreen Delay : 15 secs
+        //Splashscreen Delay : 15 secs
         seconds: 15,
         navigateAfterSeconds: new AfterSplash(),
         title: new Text(
@@ -110,6 +111,7 @@ class AfterSplash extends StatelessWidget {
         ).show();
       }
     }
+
 //Signup text URL Launcher.
     _launchURL() async {
       const url = 'https://sharpns.net';
@@ -125,7 +127,7 @@ class AfterSplash extends StatelessWidget {
       body: Stack(
         children: <Widget>[
           Center(
-          //Main screen Background Image
+            //Main screen Background Image
             child: new Image.asset(
               'bg.png',
               width: size.width,
@@ -160,7 +162,7 @@ class AfterSplash extends StatelessWidget {
                               TextStyle(color: Colors.grey, fontSize: 15),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30)),
-                              //prefixIcon: to set an icon for text field.
+                          //prefixIcon: to set an icon for text field.
                           prefixIcon: Icon(
                             Icons.person,
                             color: Colors.blue[600],
@@ -177,7 +179,7 @@ class AfterSplash extends StatelessWidget {
                         fillColor: Colors.white.withOpacity(0.5),
                         hintStyle: TextStyle(color: Colors.grey, fontSize: 15),
                         border: OutlineInputBorder(
-                          //borderRadius: To make round corners for text field.
+                            //borderRadius: To make round corners for text field.
                             borderRadius: BorderRadius.circular(30)),
                         prefixIcon: Icon(
                           Icons.lock,
