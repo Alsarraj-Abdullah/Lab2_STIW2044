@@ -79,8 +79,6 @@ class _SigninPageState extends State<SigninPage> {
     super.initState();
   }
 
- 
-
   void loadpref() async {
     print('Inside loadpref()');
     SharedPreferences prefs = await SharedPreferences.getInstance();
