@@ -1,5 +1,4 @@
 library constants;
-
 const String defaultPic = 'https://sharpns.net/mybarber3/images/profilepic.png';
 const String loginURL = 'https://sharpns.net/mybarber3/php/login_user.php';
 const String registerURL =
