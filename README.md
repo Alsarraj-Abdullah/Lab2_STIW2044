@@ -1,6 +1,6 @@
 <img src="https://raw.githubusercontent.com/Alsarraj-Abdullah/Lab2_STIW2044/master/assets/logo.png" width="400" height="400">
 
-# Lab 2 - Splash Screen and Login screen (MyBarber GUI)
+# Lab 2&3 - Splash Screen, Login, Registration and Reset Password (MyBarber - GUI+BackEnd)
 Published By: Alsarraj Abdullah yaser - 243824
 
 ## Description
