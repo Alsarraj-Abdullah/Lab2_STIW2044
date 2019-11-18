@@ -29,6 +29,7 @@ class MyApp extends StatefulWidget {
 //Text fields controllers
 final TextEditingController loginUsernameField = TextEditingController();
 final TextEditingController loginPasswordField = TextEditingController();
+final TextEditingController resetEmailField = TextEditingController();
 final TextEditingController registerUsernameField = TextEditingController();
 final TextEditingController registerPassword1Field = TextEditingController();
 final TextEditingController registerPassword2Field = TextEditingController();
@@ -69,14 +70,75 @@ class SigninPage extends StatefulWidget {
 class _SigninPageState extends State<SigninPage> {
   static const String loginURL =
       'https://sharpns.net/mybarber3/php/login_user.php';
+  static const String resetURL =
+      'https://sharpns.net/mybarber3/php/reset/enter_email.php';
+
   bool rememberMe = false;
   bool _isChecked = false;
   String _loginUsername = '';
   String _loginPassword = '';
   void initState() {
     loadpref();
+
     print('Init: $_loginUsername');
     super.initState();
+  }
+
+  void resetEmail() {
+    Pattern pattern =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regex = new RegExp(pattern);
+    //dfds
+
+    if (resetEmailField.text != '') {
+      if (regex.hasMatch(resetEmailField.text)) {
+        http.post(resetURL, body: {
+          "email": resetEmailField.text,
+        }).then((res) {
+          if (res.body == 'email_not_exist') {
+//email_not_exist
+            Toast.show(
+                "The Email Address \"" +
+                    resetEmailField.text +
+                    "\" doesn't exist. Please check your input and try again.",
+                context,
+                duration: Toast.LENGTH_LONG,
+                gravity: Toast.BOTTOM);
+          } else if (res.body == 'failed') {
+//failed
+            Toast.show("Unknown error. Please try again later.", context,
+                duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+          } else if (res.body == 'success') {
+            //success
+                        Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SigninPage()),
+            );
+            Toast.show(
+                "Thanks! Please check \"" +
+                    resetEmailField.text +
+                    "\" for a link to reset your password.",
+                context,
+                duration: Toast.LENGTH_LONG,
+                gravity: Toast.BOTTOM);
+
+            resetEmailField.text = '';
+
+
+          }
+          print(res.body);
+        }).catchError((err) {
+          Toast.show("Network error. Please try again later.", context,
+              duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+        });
+      } else {
+        Toast.show("Invalid Email Address.", context,
+            duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+      }
+    } else {
+      Toast.show("Email Address field cannot be empty.", context,
+          duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+    }
   }
 
   void loadpref() async {
@@ -362,10 +424,48 @@ class _SigninPageState extends State<SigninPage> {
                     ),
                     FlatButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SigninPage()),
-                        );
+                        Alert(
+                          context: context,
+                          type: AlertType.info,
+                          title: "Trouble Logging In?",
+                          desc:
+                              "Enter your email and we'll send you a link to get back into your account.",
+                          content: Column(children: <Widget>[
+                            SizedBox(height: 20),
+                            TextFormField(
+                                controller: resetEmailField,
+                                style: TextStyle(
+                                    color: Colors.blue[600], fontSize: 15),
+                                decoration: InputDecoration(
+                                    hintText: 'Email Address',
+                                    //filled: to make a background color for text fields.
+                                    filled: true,
+                                    //withOpacity: to make the color transparent.
+                                    fillColor: Colors.white.withOpacity(0.5),
+                                    hintStyle: TextStyle(
+                                        color: Colors.grey, fontSize: 15),
+                                    border: OutlineInputBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(30)),
+                                    //prefixIcon: to set an icon for text field.
+                                    prefixIcon: Icon(
+                                      Icons.email,
+                                      color: Colors.blue[600],
+                                    )))
+                          ]),
+                          buttons: [
+                            DialogButton(
+                              color: Colors.green[400],
+                              child: Text(
+                                "Send Link",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 18),
+                              ),
+                              onPressed: () => resetEmail(),
+                              width: 150,
+                            )
+                          ],
+                        ).show();
                       },
                       child: Text("Forgot your password?",
                           style: TextStyle(
@@ -493,6 +593,7 @@ class _SignupPageState extends State<SignupPage> {
     Pattern pattern =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
     RegExp regex = new RegExp(pattern);
+
     //If login fields are not empty.
     if (registerUsernameField.text != '' &&
         registerEmailField.text != '' &&
