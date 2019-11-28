@@ -5,8 +5,6 @@ import 'package:splashscreen/splashscreen.dart';
 
 import 'package:helloworld/HomePage.dart';
 
-
-
 void main() {
   runApp(new MaterialApp(
     home: new MyApp(),
