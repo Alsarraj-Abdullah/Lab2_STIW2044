@@ -2,7 +2,10 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:splashscreen/splashscreen.dart';
-import 'package:helloworld/SigninPage.dart';
+
+import 'package:helloworld/HomePage.dart';
+
+
 
 void main() {
   runApp(new MaterialApp(
@@ -21,8 +24,8 @@ class SplashscreenPage extends State<MyApp> {
   Widget build(BuildContext context) {
     //Splashscreen
     return new SplashScreen(
-        seconds: 10,
-        navigateAfterSeconds: new SigninPage(),
+        seconds: 5,
+        navigateAfterSeconds: new HomePage(),
         title: new Text(
           'It\'s like Uber, but for haircuts!',
           style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),

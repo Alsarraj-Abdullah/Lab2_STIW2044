@@ -35,6 +35,8 @@ dependencies:
   mime: ^0.9.6+3
   toast: ^0.1.5
   shared_preferences: ^0.5.4+3
+  flutter_spinkit: "^2.1.0"
+  gradient_app_bar: 
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -48,6 +50,7 @@ flutter:
   assets:
     
     - logo.png
+    - logotext.png
     - bg.png
     - lyas.gif
     - profilepic.png

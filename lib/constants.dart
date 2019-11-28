@@ -12,5 +12,6 @@ const String checkEmailURL =
 const String imageUploadURL =
     'https://sharpns.net/mybarber3/php/upload_image.php';
 const String imagesFolderURL = 'https://sharpns.net/mybarber3/images/';
+const String loadBarbersURL = 'https://sharpns.net/mybarber3/php/load_data.php';
 const Pattern pattern =
     r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';

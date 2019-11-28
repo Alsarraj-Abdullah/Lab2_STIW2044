@@ -1,6 +1,7 @@
 import 'package:flutter/painting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:helloworld/HomePage.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:helloworld/SignupPage.dart';
 import 'dart:convert';
@@ -171,6 +172,12 @@ class _SigninPageState extends State<SigninPage> {
           //  print(statusInfo);
 
           if (statusInfo == 'loggedIn') {
+            setState(() {
+              HomePage.drawerProfilepic = profilepicLink;
+              HomePage.isLoggedin = true;
+              HomePage.loggedUsername = loginUsernameField.text;
+              HomePage.signinButtonText = 'Sign Out';
+            });
             Alert(
               context: context,
               type: AlertType.success,
@@ -197,7 +204,12 @@ class _SigninPageState extends State<SigninPage> {
                     "Ok",
                     style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
-                  onPressed: () => Navigator.pop(context),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomePage()),
+                    );
+                  },
                   width: 150,
                 )
               ],
@@ -304,11 +316,19 @@ class _SigninPageState extends State<SigninPage> {
                   alignment: Alignment.center,
                   margin: const EdgeInsets.all(20.0),
                   child: Column(children: <Widget>[
-                    Image.asset('logo.png',
-                        height: size.height / 2.5,
-                        width: size.height / 2.5,
-                        alignment: Alignment.center,
-                        fit: BoxFit.fill),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomePage()),
+                        );
+                      },
+                      child: Image.asset('logo.png',
+                          height: size.height / 2.5,
+                          width: size.height / 2.5,
+                          alignment: Alignment.center,
+                          fit: BoxFit.fill),
+                    ),
                     SizedBox(height: 30),
                     TextField(
                         controller: loginUsernameField,
