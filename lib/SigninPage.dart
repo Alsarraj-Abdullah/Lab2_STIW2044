@@ -163,24 +163,34 @@ class _SigninPageState extends State<SigninPage> {
           "password": loginPasswordField.text,
         }).then((res) {
           //  print(res.statusCode);
-          //  print(res.body);
+          print(res.body);
           var parsedJson = json.decode(res.body);
           var profilepicLink = parsedJson['Profile_pic'];
           var statusInfo = parsedJson['status'];
-
+          var email = parsedJson['Email'];
+          var balance = parsedJson['Balance'];
           // print(profilepicLink);
-          //  print(statusInfo);
+          print(balance);
 
           if (statusInfo == 'loggedIn') {
             setState(() {
               HomePage.drawerProfilepic = profilepicLink;
+              HomePage.loggedBalance = int.parse(balance);
               HomePage.isLoggedin = true;
               HomePage.loggedUsername = loginUsernameField.text;
+              HomePage.loggedEmail = email;
               HomePage.signinButtonText = 'Sign Out';
+              HomePage.sliderHeight = 343;
             });
             Alert(
               context: context,
               type: AlertType.success,
+              closeFunction: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                );
+              },
               title: "Sign-in confirmed!",
               desc: "Welcome " +
                   loginUsernameField.text +

@@ -37,6 +37,9 @@ dependencies:
   shared_preferences: ^0.5.4+3
   flutter_spinkit: "^2.1.0"
   gradient_app_bar: 
+  webview_flutter: 
+  intl:
+  random_string: ^1.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -54,6 +57,9 @@ flutter:
     - bg.png
     - lyas.gif
     - profilepic.png
+    - cr.png
+    - cr_blue.png
+    - cr_tower.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

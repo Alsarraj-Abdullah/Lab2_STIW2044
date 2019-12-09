@@ -1,4 +1,5 @@
 library constants;
+
 const String defaultPic = 'https://sharpns.net/mybarber3/images/profilepic.png';
 const String loginURL = 'https://sharpns.net/mybarber3/php/login_user.php';
 const String registerURL =
@@ -13,5 +14,7 @@ const String imageUploadURL =
     'https://sharpns.net/mybarber3/php/upload_image.php';
 const String imagesFolderURL = 'https://sharpns.net/mybarber3/images/';
 const String loadBarbersURL = 'https://sharpns.net/mybarber3/php/load_data.php';
+const String getUserDataURL =
+    'https://sharpns.net/mybarber3/php/load_profilepic.php?username=';
 const Pattern pattern =
     r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
