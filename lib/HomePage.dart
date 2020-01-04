@@ -4,6 +4,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:helloworld/SignInPage.dart';
+import 'package:helloworld/EditProfile.dart';
 import 'package:helloworld/SignupPage.dart';
 import 'package:helloworld/payment.dart';
 import 'UnicornOutlineButton.dart';
@@ -53,7 +54,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _updateUserData() {
-    http.get(Constants.getUserDataURL + HomePage.loggedUsername).then((res) {
+    if(HomePage.isLoggedin==true){
+http.get(Constants.getUserDataURL + HomePage.loggedUsername).then((res) {
       var jsonData = json.decode(res.body);
       var ppic = jsonData['Profile_pic'];
       var balance = jsonData['Balance'];
@@ -66,6 +68,13 @@ class _HomePageState extends State<HomePage> {
     }).catchError((err) {
       print(err);
     });
+    }else{
+            setState(() {
+        HomePage.drawerProfilepic = Constants.defaultPic;
+        HomePage.loggedBalance = 0;
+        HomePage.loggedEmail = "";
+      });
+    }
   }
 
   Future<List<Barber>> _getBarbers() async {
@@ -292,7 +301,18 @@ class _HomePageState extends State<HomePage> {
                 height: HomePage.sliderHeight,
                 child: DrawerHeader(
                   child: ListView(children: <Widget>[
-                    CircleAvatar(
+                    GestureDetector(
+                      onTap: () {
+if(HomePage.isLoggedin==true ){
+  print(HomePage.isLoggedin);
+Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => EditProfile()),
+                            );
+}
+                      },
+                      child: CircleAvatar(
                       backgroundColor: Colors.white,
                       radius: size.width / 9,
                       child: CircleAvatar(
@@ -302,6 +322,8 @@ class _HomePageState extends State<HomePage> {
                             NetworkImage(HomePage.drawerProfilepic),
                       ),
                     ),
+                    ),
+                    
                     SizedBox(height: 8),
                     Text(
                       HomePage.loggedUsername,
@@ -423,6 +445,27 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ).show();
                           }
+                        },
+                      ),
+                    ),
+                    SizedBox(height: 10,),
+                    new SizedBox(
+                      height: size.height / 28,
+                      width: size.width / 28,
+                      child: UnicornOutlineButton(
+                        strokeWidth: 2,
+                        radius: 24,
+                        gradient: LinearGradient(
+                            colors: [Colors.cyan[50], Colors.cyan[600]]),
+                        child: Text('Edit Profile',
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 14)),
+                        onPressed: () {
+                      Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => EditProfile()),
+                            );
                         },
                       ),
                     ),

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:helloworld/HomePage.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:helloworld/SignupPage.dart';
+import 'package:helloworld/EditProfile.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'constants.dart' as Constants;
@@ -180,7 +181,11 @@ class _SigninPageState extends State<SigninPage> {
               HomePage.loggedUsername = loginUsernameField.text;
               HomePage.loggedEmail = email;
               HomePage.signinButtonText = 'Sign Out';
-              HomePage.sliderHeight = 343;
+              HomePage.sliderHeight =395;
+editEmailField.text= email;
+editUsernameField.text = loginUsernameField.text;
+editPassword1Field.text = loginPasswordField.text;
+editPassword2Field.text = loginPasswordField.text;
             });
             Alert(
               context: context,

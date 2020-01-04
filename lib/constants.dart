@@ -6,6 +6,8 @@ const String registerURL =
     'https://sharpns.net/mybarber3/php/register_user.php';
 const String resetURL =
     'https://sharpns.net/mybarber3/php/reset/enter_email.php';
+const String editURL =
+    'https://sharpns.net/mybarber3/php/editprofile.php';
 const String checkUsernameURL =
     "https://sharpns.net/mybarber3/php/check_username.php";
 const String checkEmailURL =
