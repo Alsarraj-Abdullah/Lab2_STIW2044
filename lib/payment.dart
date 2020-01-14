@@ -40,6 +40,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             widget.val +
                             '&orderid=' +
                             widget.orderid,
+                            
                     javascriptMode: JavascriptMode.unrestricted,
                     onWebViewCreated: (WebViewController webViewController) {
                       _controller.complete(webViewController);
